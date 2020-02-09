@@ -1,0 +1,31 @@
+- name: Download cfssl
+  get_url:
+    url: https://pkg.cfssl.orgi/R1.2/cfssl_linux-amd64 
+    dest: /usr/local/bin/cfssl
+    mode: '0755'
+
+- name: Download cfssl-json
+  get_url:  
+    url:  https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+    mode: '0755'
+
+
+- name: create directories for keys if they don't exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0775'
+  with_items:
+    - "{{ deploy_path }}/admin"
+    - "{{ deploy_path }}/api"
+    - "{{ deploy_path }}/ca"
+    - "{{ deploy_path }}/clients"
+    - "{{ deploy_path }}/controller"
+    - "{{ deploy_path }}/proxy"
+    - "{{ deploy_path }}/scheduler"
+    - "{{ deploy_path }}/service-account"
+  
+
+
