@@ -1,0 +1,21 @@
+# Controller nodes
+[controller]
+10.1.0.52
+10.1.0.54
+10.1.0.55
+
+# Worker nodes
+[worker]
+10.1.0.56
+10.1.0.57
+10.1.0.58
+
+#  Load Balancer
+[lb]
+10.1.0.60
+
+
+#Controller and worker nodes
+[cw:children]
+controller
+worker
