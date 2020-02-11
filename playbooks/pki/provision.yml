@@ -1,3 +1,8 @@
+---
+- hosts: deploy
+  connection: local
+  become: yes
+
 - name: Download cfssl
   get_url:
     url: https://pkg.cfssl.orgi/R1.2/cfssl_linux-amd64 
@@ -18,14 +23,14 @@
     group: root
     mode: '0775'
   with_items:
-    - "{{ deploy_path }}/admin"
-    - "{{ deploy_path }}/api"
-    - "{{ deploy_path }}/ca"
-    - "{{ deploy_path }}/clients"
-    - "{{ deploy_path }}/controller"
-    - "{{ deploy_path }}/proxy"
-    - "{{ deploy_path }}/scheduler"
-    - "{{ deploy_path }}/service-account"
+    - "{{ playbook_dir }}/admin"
+    - "{{ playbook_dir }}/api"
+    - "{{ playbook_dir }}/ca"
+    - "{{ playbook_dir }}/clients"
+    - "{{ playbook_dir }}/controller"
+    - "{{ playbook_dir }}/proxy"
+    - "{{ playbook_dir }}/scheduler"
+    - "{{ playbook_dir }}/service-account"
   
 
 
